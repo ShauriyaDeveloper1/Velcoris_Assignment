@@ -10,7 +10,6 @@
 **Deliverable:** Round 1 Comprehensive Analysis & Working Prototype  
 **Date of Submission:** 14 November 2026  
 **Repository:** [github.com/ShauriyaDeveloper1/Velcoris_Assignment](https://github.com/ShauriyaDeveloper1/Velcoris_Assignment)  
-**Document Version:** 1.2 (Final Verified Candidate Submission)
 
 ---
 
@@ -40,11 +39,11 @@
 
 ## Executive Summary
 
-Velcoris Industries stands at a pivotal intersection of Indian industrial manufacturing and advanced nanotechnology, specializing in Few-Layer Graphene (FLG) and Graphene Oxide (GO). The company leverages a closed-loop carbon conversion platform to produce high-specification nanomaterials domestically in Greater Noida, India.
+Velcoris Industries occupies an important nexus between Indian industrial manufacturing and cutting-edge nanotechnology and specializes in Few-Layer Graphene (FLG) and Graphene Oxide (GO). Velcoris uses a closed carbon loop conversion process for making high specification nanomaterials domestically in Greater Noida, India.
 
-This report delivers a thorough technical and architectural assessment for Round 1 of the **Digital Infrastructure & Backend-IT Fellowship**:
-1. **Task 1 (Website Analysis & Redesign):** A comprehensive evaluation of the existing web presence across design, navigation, information hierarchy, and responsiveness, accompanied by a clean, high-performance working prototype built in Flask, semantic HTML5, modern CSS, and vanilla JavaScript.
-2. **Task 2 (Backend & IT Infrastructure Analysis):** An evaluation of infrastructure requirements, cloud email and identity platforms, workflow automations, enterprise security baselines, and a fully functional Query Management System powered by parameterised SQL, `python-dotenv` environment configuration, an administrative web dashboard, and CLI database inspection tools.
+The following is a technical and architectural assessment of Round 1 of the **Digital Infrastructure & Backend-IT Fellowship**:
+1. **Task 1 (Website Analysis & Redesign):** Evaluation of the current website in terms of design, navigation, information hierarchy and responsiveness, along with creation of a well-designed and high-performing website prototype using Flask, semantic HTML5, modern CSS, and vanilla JavaScript.
+2. **Task 2 (Backend & IT Infrastructure Analysis):** Evaluation of infrastructure needs, cloud email/identity services, workflow automation, enterprise security baselines, along with Query Management System implemented using parameterized SQL queries, python-dotenv library, admin web dashboard, and database exploration from command line interface.
 
 All architectural assertions, backend features, database persistences, and CLI commands described herein have been verified through automated test suites and local testing.
 
@@ -351,13 +350,8 @@ The accompanying codebase is fully functional, thoroughly tested, and pre-config
 3. [Velcoris Corporate Page](https://velcorisindustries.com/company) — Leadership, mission, and operating team information.
 4. [Velcoris Contact Page](https://velcorisindustries.com/contact) — Official sample request and partnership channels.
 
-### Industrial Design & Technical Benchmarks
-5. [Hexcel Corporation](https://www.hexcel.com/) — Reference for advanced carbon composites hierarchy and technical datasheet presentation.
-6. [Toray Advanced Composites](https://www.toraytac.com/) — Reference for purpose-driven B2B customer inquiry funnels.
-7. [BASF Advanced Materials](https://www.basf.com/) — Reference for process transparency and material validation standards.
-
 ### Technical Documentation & Standards
-8. [Flask Application Factory Documentation](https://flask.palletsprojects.com/en/stable/patterns/appfactories/) — Recommended modular web architecture.
-9. [SQLite Documentation & Row Factory Standards](https://www.sqlite.org/docs.html) — Structured relational persistence.
-10. [OWASP Cheat Sheet Series: Input Validation & Security Headers](https://cheatsheetseries.owasp.org/) — Industry-standard web security baselines.
-11. [MDN Web Docs: Responsive Web Layouts](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design) — Semantic responsive layout principles.
+5. [Flask Application Factory Documentation](https://flask.palletsprojects.com/en/stable/patterns/appfactories/) — Recommended modular web architecture.
+6. [SQLite Documentation & Row Factory Standards](https://www.sqlite.org/docs.html) — Structured relational persistence.
+7. [OWASP Cheat Sheet Series: Input Validation & Security Headers](https://cheatsheetseries.owasp.org/) — Industry-standard web security baselines.
+8. [MDN Web Docs: Responsive Web Layouts](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design) — Semantic responsive layout principles.
