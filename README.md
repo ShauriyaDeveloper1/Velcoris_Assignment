@@ -29,7 +29,7 @@ A working assessment prototype for the two tasks in the Velcoris Industries Roun
 pip install -r requirements.txt
 
 # 3. Environment configuration is automatically loaded from `.env` via python-dotenv:
-#    SECRET_KEY=1a71745918d743e3a7a2e59d57bf56fdd0ccb94947fc1cfadef1e544ba18f730
+#    SECRET_KEY=your_secret_key_here
 #    ADMIN_USERNAME=admin
 #    ADMIN_PASSWORD=admin123
 #    DATABASE_PATH=instance/velcoris.db
