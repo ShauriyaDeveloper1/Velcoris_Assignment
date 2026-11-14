@@ -1,12 +1,18 @@
 import re
+from pathlib import Path
 from functools import wraps
-from flask import Blueprint, current_app, flash, jsonify, redirect, render_template, request, session, url_for
+from flask import Blueprint, current_app, flash, jsonify, redirect, render_template, request, session, url_for, send_from_directory
 from werkzeug.security import check_password_hash, generate_password_hash
 from .db import get_db
 
 bp = Blueprint('main', __name__)
 EMAIL_RE = re.compile(r'^[^\s@]+@[^\s@]+\.[^\s@]+$')
 ALLOWED_STATUS = {'New', 'In Progress', 'Responded', 'Closed'}
+
+@bp.get('/static/<path:filename>')
+def serve_static(filename):
+    static_dir = Path(__file__).resolve().parent / 'static'
+    return send_from_directory(str(static_dir), filename)
 
 @bp.get('/')
 @bp.get('/api/index.py')
