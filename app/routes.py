@@ -14,11 +14,13 @@ def serve_static(filename):
     static_dir = Path(__file__).resolve().parent / 'static'
     return send_from_directory(str(static_dir), filename)
 
-@bp.get('/')
-@bp.get('/api/index.py')
-@bp.get('/api/index')
-@bp.get('/api')
+@bp.route('/', methods=['GET', 'POST'])
+@bp.route('/api/index.py', methods=['GET', 'POST'])
+@bp.route('/api/index', methods=['GET', 'POST'])
+@bp.route('/api', methods=['GET', 'POST'])
 def home():
+    if request.method == 'POST':
+        return create_enquiry()
     return render_template('index.html')
 
 @bp.get('/health')
@@ -26,6 +28,8 @@ def health():
     return jsonify({'status': 'ok', 'service': 'velcoris-enquiry-api'})
 
 @bp.post('/api/enquiries')
+@bp.post('/enquiries')
+@bp.post('/api/index.py/api/enquiries')
 def create_enquiry():
     data = request.get_json(silent=True) if request.is_json else request.form
     data = data or {}
@@ -47,6 +51,7 @@ def create_enquiry():
                tuple(fields[k] for k in ['name','email','organisation','enquiry_type','subject','message']))
     db.commit()
     return jsonify({'message':'Thank you. Your enquiry has been received. Our team will review it shortly.'}), 201
+
 
 def login_required(fn):
     @wraps(fn)
