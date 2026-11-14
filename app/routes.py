@@ -9,6 +9,9 @@ EMAIL_RE = re.compile(r'^[^\s@]+@[^\s@]+\.[^\s@]+$')
 ALLOWED_STATUS = {'New', 'In Progress', 'Responded', 'Closed'}
 
 @bp.get('/')
+@bp.get('/api/index.py')
+@bp.get('/api/index')
+@bp.get('/api')
 def home():
     return render_template('index.html')
 
