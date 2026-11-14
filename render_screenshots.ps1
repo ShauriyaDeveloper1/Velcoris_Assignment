@@ -190,7 +190,7 @@ function Draw-Input($g, $label, $val, $x, $y, $w, $h, $fontNameSans, $bDark) {
 }
 
 Draw-Input $g2 "Name *" "Dr. Rajesh Sharma" 670 110 500 36 $fontNameSans $bDark
-Draw-Input $g2 "Work email *" "r.sharma@aerotech-materials.in" 670 175 500 36 $fontNameSans $bDark
+Draw-Input $g2 "Work email *" "r.sharma@aerotech-materials.test" 670 175 500 36 $fontNameSans $bDark
 Draw-Input $g2 "Organisation" "AeroTech Materials Ltd" 670 240 500 36 $fontNameSans $bDark
 Draw-Input $g2 "Enquiry type *" "Sample request  [v]" 670 305 500 36 $fontNameSans $bDark
 Draw-Input $g2 "Subject *" "Evaluation of Few-Layer Graphene for polymer composites" 670 370 500 36 $fontNameSans $bDark
@@ -324,13 +324,13 @@ $g4.DrawString("2026-11-14 07:31 UTC", $fTd, $bDark, 75, 335)
 $g4.DrawString("#3", $fTh, [System.Drawing.SolidBrush]::new([System.Drawing.Color]::FromArgb(119, 130, 121)), 75, 355)
 
 $g4.DrawString("Dr. Rajesh Sharma", $fTdBold, $bDark, 220, 335)
-$g4.DrawString("r.sharma@aerotech-materials.in", $fTdSmall, [System.Drawing.SolidBrush]::new([System.Drawing.Color]::FromArgb(40, 80, 150)), 220, 353)
+$g4.DrawString("r.sharma@aerotech-materials.test", $fTdSmall, [System.Drawing.SolidBrush]::new([System.Drawing.Color]::FromArgb(40, 80, 150)), 220, 353)
 $g4.DrawString("AeroTech Materials Ltd", $fTdSmall, $bTh, 220, 370)
 
 $g4.DrawString("Sample request", $fTdBold, $bDark, 440, 335)
-$g4.DrawString("Evaluation of Few-Layer Graphene...", $fTdSmall, $bTh, 440, 353)
+$g4.DrawString("Evaluation of FLG for conductive polymers", $fTdSmall, $bTh, 440, 353)
 
-$g4.DrawString("We would like to request 50g sample of Few-Layer`nGraphene to evaluate conductivity in epoxy...", $fTd, $bDark, 670, 335)
+$g4.DrawString("We would like to request 50g sample of Few-Layer`nGraphene for thermal & electrical testing...", $fTd, $bDark, 670, 335)
 
 $brushStatus1 = [System.Drawing.SolidBrush]::new([System.Drawing.Color]::FromArgb(237, 243, 231))
 $g4.FillRectangle($brushStatus1, 960, 340, 60, 22)
@@ -347,14 +347,14 @@ $g4.DrawLine($penLine, 60, 400, 1220, 400)
 $g4.DrawString("2026-11-14 06:57 UTC", $fTd, $bDark, 75, 415)
 $g4.DrawString("#2", $fTh, [System.Drawing.SolidBrush]::new([System.Drawing.Color]::FromArgb(119, 130, 121)), 75, 435)
 
-$g4.DrawString("Hurry Evaluator", $fTdBold, $bDark, 220, 415)
-$g4.DrawString("evaluator@velcoris.test", $fTdSmall, [System.Drawing.SolidBrush]::new([System.Drawing.Color]::FromArgb(40, 80, 150)), 220, 433)
-$g4.DrawString("Velcoris Review Panel", $fTdSmall, $bTh, 220, 450)
+$g4.DrawString("Vikram Mehta", $fTdBold, $bDark, 220, 415)
+$g4.DrawString("v.mehta@cleantech-energy.test", $fTdSmall, [System.Drawing.SolidBrush]::new([System.Drawing.Color]::FromArgb(40, 80, 150)), 220, 433)
+$g4.DrawString("CleanTech Storage Solutions", $fTdSmall, $bTh, 220, 450)
 
-$g4.DrawString("Sample request", $fTdBold, $bDark, 440, 415)
-$g4.DrawString("Quick Evaluation Test", $fTdSmall, $bTh, 440, 433)
+$g4.DrawString("Partnership", $fTdBold, $bDark, 440, 415)
+$g4.DrawString("Bulk supply evaluation for energy storage", $fTdSmall, $bTh, 440, 433)
 
-$g4.DrawString("Testing quick discovery of admin portal button`nand status update verification.", $fTd, $bDark, 670, 415)
+$g4.DrawString("Evaluating annual supply of Few-Layer Graphene`nfor supercapacitor prototype manufacturing.", $fTd, $bDark, 670, 415)
 
 $g4.FillRectangle([System.Drawing.SolidBrush]::new([System.Drawing.Color]::FromArgb(230, 240, 250)), 960, 420, 65, 22)
 $g4.DrawString("Responded", $fTh, [System.Drawing.SolidBrush]::new([System.Drawing.Color]::FromArgb(25, 60, 120)), 964, 424)
@@ -370,14 +370,14 @@ $g4.DrawLine($penLine, 60, 480, 1220, 480)
 $g4.DrawString("2026-11-14 05:29 UTC", $fTd, $bDark, 75, 495)
 $g4.DrawString("#1", $fTh, [System.Drawing.SolidBrush]::new([System.Drawing.Color]::FromArgb(119, 130, 121)), 75, 515)
 
-$g4.DrawString("Shauriya Garg", $fTdBold, $bDark, 220, 495)
-$g4.DrawString("shauriyagarg867@gmail.com", $fTdSmall, [System.Drawing.SolidBrush]::new([System.Drawing.Color]::FromArgb(40, 80, 150)), 220, 513)
-$g4.DrawString("Bennett University", $fTdSmall, $bTh, 220, 530)
+$g4.DrawString("Dr. Priya Nair", $fTdBold, $bDark, 220, 495)
+$g4.DrawString("p.nair@composites-lab.test", $fTdSmall, [System.Drawing.SolidBrush]::new([System.Drawing.Color]::FromArgb(40, 80, 150)), 220, 513)
+$g4.DrawString("Advanced Composites Institute", $fTdSmall, $bTh, 220, 530)
 
-$g4.DrawString("Sample request", $fTdBold, $bDark, 440, 495)
-$g4.DrawString("Initial Assessment Verification", $fTdSmall, $bTh, 440, 513)
+$g4.DrawString("Technical consultation", $fTdBold, $bDark, 440, 495)
+$g4.DrawString("Mechanical characterisation of GO", $fTdSmall, $bTh, 440, 513)
 
-$g4.DrawString("Materials evaluation inquiry for graphene-based`nsupercapacitor prototypes.", $fTd, $bDark, 670, 495)
+$g4.DrawString("Inquiry regarding tensile strength enhancement`nin epoxy composites using graphene oxide.", $fTd, $bDark, 670, 495)
 
 $g4.FillRectangle($brushStatus1, 960, 500, 60, 22)
 $g4.DrawString("In Progress", $fTh, [System.Drawing.SolidBrush]::new([System.Drawing.Color]::FromArgb(40, 70, 45)), 964, 504)
@@ -466,9 +466,9 @@ function Draw-SqlRow($g, $y, $vals, $cols, $fSqlD, $penGridSql) {
     }
 }
 
-$r1 = @("1", "Shauriya Garg", "shauriyagarg867@gmail.com", "Bennett University", "Sample request", "jfflfkh", "vlffwkkwjwf;llf1", "In Progress", "2026-11-14 05:29")
-$r2 = @("2", "Hurry Evaluator", "evaluator@velcoris.test", "Velcoris Review Panel", "Sample request", "Quick Evaluation Test", "Testing discovery of admin...", "Responded", "2026-11-14 06:57")
-$r3 = @("3", "Dr. Rajesh Sharma", "r.sharma@aerotech-materials.in", "AeroTech Materials Ltd", "Sample request", "Evaluation of FLG for...", "We would like to request 50g...", "In Progress", "2026-11-14 07:31")
+$r1 = @("1", "Dr. Priya Nair", "p.nair@composites-lab.test", "Advanced Composites Inst", "Technical consult", "Mechanical characterisation...", "Inquiry regarding tensile...", "In Progress", "2026-11-14 05:29")
+$r2 = @("2", "Vikram Mehta", "v.mehta@cleantech-energy.test", "CleanTech Storage Sol", "Partnership", "Bulk supply evaluation...", "Evaluating annual supply of...", "Responded", "2026-11-14 06:57")
+$r3 = @("3", "Dr. Rajesh Sharma", "r.sharma@aerotech-materials.test", "AeroTech Materials Ltd", "Sample request", "Evaluation of FLG for...", "We would like to request 50g...", "In Progress", "2026-11-14 07:31")
 
 Draw-SqlRow $g5 148 $r1 $cols $fSqlD $penGridSql
 Draw-SqlRow $g5 183 $r2 $cols $fSqlD $penGridSql

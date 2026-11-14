@@ -28,11 +28,14 @@ A working assessment prototype for the two tasks in the Velcoris Industries Roun
 # 2. Install requirements (including Flask and python-dotenv)
 pip install -r requirements.txt
 
-# 3. Environment configuration is automatically loaded from `.env` via python-dotenv:
-#    SECRET_KEY=your_secret_key_here
-#    ADMIN_USERNAME=admin
-#    ADMIN_PASSWORD=admin123
+# 3. Create your local .env configuration file (copy from .env.example):
+#    Copy-Item .env.example .env
+#    Edit .env to set your own secure credentials and secret key:
+#    SECRET_KEY=your_generated_random_secret_key
+#    ADMIN_USERNAME=your_chosen_admin_user
+#    ADMIN_PASSWORD=your_strong_admin_password
 #    DATABASE_PATH=instance/velcoris.db
+#    (Note: .env is strictly excluded from version control via .gitignore)
 
 # 4. Start the server
 python run.py
@@ -40,7 +43,7 @@ python run.py
 
 Open `http://127.0.0.1:5000`.
 
-Admin portal: `http://127.0.0.1:5000/admin/login` (Username: `admin`, Password: `admin123` as configured in `.env`).
+Admin portal: `http://127.0.0.1:5000/admin/login` (Sign in using the credentials you configured in your `.env` file).
 
 ### macOS/Linux
 
@@ -48,6 +51,8 @@ Admin portal: `http://127.0.0.1:5000/admin/login` (Username: `admin`, Password: 
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+cp .env.example .env
+# Edit .env with your preferred credentials
 python run.py
 ```
 
@@ -59,7 +64,7 @@ The assignment requires demonstrating how the stored queries can be accessed and
 
 1. **Web Admin Dashboard (GUI)**:
    - Go to `http://127.0.0.1:5000/admin/login`
-   - Sign in with credentials from `.env` (`admin` / `admin123`)
+   - Sign in with your environment-configured administrator credentials (`ADMIN_USERNAME` / `ADMIN_PASSWORD` from `.env`).
    - View the full table of submitted queries, metadata, statuses, and change inquiry status (`New`, `In Progress`, `Responded`, `Closed`).
 
 2. **Command Line / Standalone Script**:
@@ -68,7 +73,7 @@ The assignment requires demonstrating how the stored queries can be accessed and
 
 ## Deploying to Vercel
 
-The application is fully pre-configured for Vercel Serverless deployment with `vercel.json` and `api/index.py`:
+The application is pre-configured for Vercel Serverless deployment with `vercel.json` and `api/index.py`:
 
 ### Option 1: Via Vercel CLI
 ```bash
@@ -80,10 +85,10 @@ vercel
 1. Push your repository to GitHub (or GitLab/Bitbucket).
 2. Go to [vercel.com](https://vercel.com) and click **"Add New Project"**.
 3. Import this repository.
-4. Set Environment Variables in Project Settings:
+4. Set Environment Variables in Project Settings (**never commit these to Git**):
    - `SECRET_KEY`: `your-secure-random-secret`
-   - `ADMIN_USERNAME`: `admin`
-   - `ADMIN_PASSWORD`: `your-admin-password`
+   - `ADMIN_USERNAME`: `your-admin-username`
+   - `ADMIN_PASSWORD`: `your-strong-unique-password`
 5. Click **Deploy**. Vercel will build the Python serverless function automatically.
 *(Note: On serverless functions, the writable disk is ephemeral at `/tmp/velcoris.db`. For persistent high-volume production data, connect to managed cloud PostgreSQL via Supabase or Neon).*
 

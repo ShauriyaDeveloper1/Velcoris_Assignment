@@ -149,16 +149,16 @@ The working prototype was built in Flask 3.1 and tested across standard desktop 
 
 ### 2.1 Existing Technical Setup: Evidence & Unknowns
 
-An audit of the public web footprint was conducted. External browser observations reveal client assets, but enterprise infrastructure requires explicit inventory:
+An audit of the public web footprint was conducted. External browser observations reveal client assets, while distinguishing existing enterprise unknowns from our prototype implementation:
 
-| Infrastructure Layer | Observable Status | Confidence | Recommended Verification Step |
+| Layer | Existing Velcoris Setup | Your Prototype | Target Recommendation |
 |---|---|---|---|
-| **Public Frontend** | HTML5, CSS stylesheets, client-side scripts, responsive viewports | Observed | Audit bundle size, web vitals, and asset CDN caching. |
-| **Origin Web Server** | Reverse proxy headers exposed to public clients | Inferred | Inspect server headers (`nginx`, `Cloudflare`, `AWS CloudFront`). |
-| **Backend Framework** | Rendered static/server pages; internal endpoints unexposed | Unknown | Audit repository source code or hosting provider console. |
-| **Database Tier** | Stored query backend not directly observable publicly | Unknown | Connect to managed PostgreSQL/RDS instance with SSL certificates. |
-| **Business Email & Identity** | Domain MX records (`@velcorisindustries.com`) | Inferred | Verify tenant ownership in Google Workspace or Microsoft 365 Admin. |
-| **Workflow Automation** | External webhooks or CRM sync triggers not public | Unknown | Establish unified automation pipelines via n8n, Make, or Power Automate. |
+| **Backend** | Unknown | Flask | Gunicorn / FastAPI with containerised CI/CD |
+| **Database** | Unknown | SQLite | Managed PostgreSQL (AWS RDS / Neon) with WAL backups |
+| **Frontend** | Publicly observed | HTML/CSS/JavaScript | Zero-dependency vanilla JS and semantic HTML5 |
+| **Origin Web Server** | Inferred (Reverse proxy headers) | Vercel WSGI Serverless | Cloudflare Edge CDN / WAF with TLS 1.3 |
+| **Business Email & Identity** | Inferred (Domain MX records) | Session RBAC (.env credentials) | Google Workspace / M365 with hardware MFA |
+| **Workflow Automation** | Unknown | CLI & JSON endpoints | n8n / Make webhook pipelines to CRM & Slack |
 
 ---
 
@@ -293,12 +293,12 @@ The testing matrix below documents the test cases executed against the live appl
 
 | # | Test Scenario | Input Data / Action | Expected Result | Actual Result | HTTP Code | Status |
 |---|---|---|---|---|---|---|
-| **T1** | Valid Enquiry Submission | Full valid payload (`Dr. Rajesh Sharma`, `r.sharma@aerotech-materials.in`, Sample request) | Saved to SQLite, confirmation returned | Record inserted; confirmation JSON returned | `201 Created` | **PASS** |
+| **T1** | Valid Enquiry Submission | Full valid payload (`Dr. Rajesh Sharma`, `r.sharma@aerotech-materials.test`, Sample request) | Saved to SQLite, confirmation returned | Record inserted; confirmation JSON returned | `201 Created` | **PASS** |
 | **T2** | Invalid Email Format | `email: "not-an-email"` | Rejected with field-specific error | Rejected with `{"email": "Enter a valid email address."}` | `400 Bad Request` | **PASS** |
 | **T3** | Name Too Short | `name: "A"` (< 2 characters) | Rejected with length error | Rejected with `{"name": "Enter a name between 2 and 100 characters."}` | `400 Bad Request` | **PASS** |
 | **T4** | Honeypot Bot Trap | `website: "http://spam-link.com"` | Silently dropped without database storage | Returns `201` fake success; 0 rows inserted | `201 Created` | **PASS** |
 | **T5** | Unauthenticated Admin Access | `GET /admin` without active session | Redirects to login page | Redirects to `/admin/login?next=%2Fadmin` | `302 Found` | **PASS** |
-| **T6** | Admin Authentication | Valid credentials (`admin` / `admin123`) | Session established, redirect to dashboard | Session authenticated; dashboard rendered | `302 → 200` | **PASS** |
+| **T6** | Admin Authentication | Valid credentials matching `.env` configuration | Session established, redirect to dashboard | Session authenticated; dashboard rendered | `302 → 200` | **PASS** |
 | **T7** | Status Update Lifecycle | `POST /admin/enquiries/1/status` with `status="In Progress"` | DB record updated, persists on reload | Record updated in SQLite; badge reflects `In Progress` | `302 → 200` | **PASS** |
 | **T8** | Service Healthcheck | `GET /health` | Returns service status and name | Returns `{"service": "velcoris-enquiry-api", "status": "ok"}` | `200 OK` | **PASS** |
 | **T9** | Standalone Script Execution | Run `python view_enquiries.py` in shell | Prints stored enquiries in terminal | Outputs all rows from `instance/velcoris.db` cleanly | Exit `0` | **PASS** |
@@ -338,7 +338,7 @@ By pairing a **modular, high-performance web architecture** with an **automated,
 - Convert prospective engineering leads into structured sample evaluations with minimal friction.
 - Maintain rigorous enterprise security, auditability, and data integrity from day one.
 
-The accompanying codebase is fully functional, thoroughly tested, and pre-configured for instant container or Vercel serverless deployment.
+The prototype is functional and suitable for technical evaluation. Additional security hardening, managed database integration and deployment validation are required before production use.
 
 ---
 
