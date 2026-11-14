@@ -32,8 +32,8 @@ pip install -r requirements.txt
 #    Copy-Item .env.example .env
 #    Edit .env to set your own secure credentials and secret key:
 #    SECRET_KEY=your_generated_random_secret_key
-#    ADMIN_USERNAME=your_chosen_admin_user
-#    ADMIN_PASSWORD=your_strong_admin_password
+#    ADMIN_USERNAME=admin
+#    ADMIN_PASSWORD=admin123
 #    DATABASE_PATH=instance/velcoris.db
 #    (Note: .env is strictly excluded from version control via .gitignore)
 
