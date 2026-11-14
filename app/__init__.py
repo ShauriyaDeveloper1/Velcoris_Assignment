@@ -15,28 +15,41 @@ else:
 def create_app():
     app = Flask(__name__, template_folder='templates', static_folder='static')
     
-    # Resolve database path from environment variable or fallback
-    # In Vercel serverless functions, root filesystem is read-only; /tmp is writable.
-    if os.environ.get('VERCEL'):
-        raw_db_path = os.environ.get('DATABASE_PATH', '/tmp/velcoris.db')
+    # Detect serverless or read-only container environments (Vercel, AWS Lambda, etc.)
+    is_serverless = any([
+        os.environ.get('VERCEL'),
+        os.environ.get('VERCEL_ENV'),
+        os.environ.get('AWS_LAMBDA_FUNCTION_NAME'),
+        os.environ.get('LAMBDA_TASK_ROOT'),
+        os.environ.get('NOW_REGION')
+    ])
+
+    raw_db_path = os.environ.get('DATABASE_PATH')
+    if is_serverless:
+        # On serverless, always ensure database is stored in writable /tmp
+        db_path = Path(raw_db_path or '/tmp/velcoris.db')
+        if not db_path.is_absolute():
+            db_path = Path('/tmp') / db_path.name
+    elif raw_db_path:
         db_path = Path(raw_db_path)
+        if not db_path.is_absolute():
+            db_path = (project_root / db_path).resolve()
     else:
-        raw_db_path = os.environ.get('DATABASE_PATH')
-        if raw_db_path:
-            db_path = Path(raw_db_path)
-            if not db_path.is_absolute():
-                db_path = (project_root / db_path).resolve()
-        else:
-            db_path = (Path(app.instance_path) / 'velcoris.db').resolve()
+        db_path = (Path(app.instance_path) / 'velcoris.db').resolve()
 
     try:
         db_path.parent.mkdir(parents=True, exist_ok=True)
-    except OSError:
-        pass
+    except Exception:
+        # Fallback to /tmp if parent directory cannot be written
+        db_path = Path('/tmp/velcoris.db')
+        try:
+            db_path.parent.mkdir(parents=True, exist_ok=True)
+        except Exception:
+            pass
 
     try:
         Path(app.instance_path).mkdir(parents=True, exist_ok=True)
-    except OSError:
+    except Exception:
         pass
 
     app.config.update(
