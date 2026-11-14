@@ -14,7 +14,9 @@ if (form) form.addEventListener('submit', async (event) => {
     const response = await fetch('/api/enquiries', { method: 'POST', body: new FormData(form), headers: {'Accept':'application/json'} });
     const result = await response.json();
     if (!response.ok) throw new Error(Object.values(result.errors || {}).join(' ' ) || result.message || 'Unable to send enquiry.');
-    form.reset(); status.textContent = result.message; status.className = 'form-note success-message';
+    form.reset();
+    status.innerHTML = `<strong>${result.message}</strong><br><a href="/admin/login" class="view-admin-link">→ Open Admin Portal to view your query in database ↗</a>`;
+    status.className = 'form-note success-message';
   } catch (error) {
     status.textContent = error.message || 'Something went wrong. Please try again.'; status.className = 'form-note error-message';
   } finally { button.disabled = false; button.innerHTML = 'Send enquiry <span>↗</span>'; }
